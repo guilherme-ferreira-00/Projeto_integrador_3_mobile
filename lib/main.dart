@@ -111,7 +111,93 @@ class MyHomePage extends StatelessWidget {
           label: Text('Salvar'),
           onPressed: () => {},
         ),
+        RaisedButton.icon(
+          icon: Icon(Icons.add, size: 16),
+          label: Text('Curso'),
+          onPressed: () => {
+            Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context)=>new Curso())
+          ),
+
+          },
+        ),
       ]),
+    );
+  }
+}
+
+
+class Curso extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+
+  return Scaffold(
+    backgroundColor: Colors.green,
+  appBar: AppBar(title: Text('Curso'),),
+    body: Column(children: [
+      TextFormField(
+      initialValue: '',
+      decoration: InputDecoration(
+        labelText: 'Digite o Nome',
+        border: OutlineInputBorder(),
+        suffixIcon: Icon(
+          Icons.error,
+        ),
+      ),
+    ),
+    TextFormField(
+      initialValue: '',
+      decoration: InputDecoration(
+        labelText: 'Digite a carga horária',
+        border: OutlineInputBorder(),
+        suffixIcon: Icon(
+          Icons.error,
+        ),
+      ),
+    ),
+    DropdownButton<String>(
+      hint: Text('Escolha a área do curso'),
+      items: <String>[
+        'Exatas',
+        'Humanas',
+        'Biologicas'
+      ].map((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+      onChanged: (_) {},
+    ),
+    DropdownButton<String>(
+      hint: Text('Escolha o tipo do curso'),
+      items: <String>[
+        'Presencial Diurno',
+        'Presencial Noturno',
+        'Semi-presencial',
+        'Á Distancia'
+      ].map((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+      onChanged: (_) {},
+    ),
+    RaisedButton.icon(
+      icon: Icon(Icons.add, size: 16),
+      label: Text('Salvar'),
+      onPressed: () => {},
+    ),
+      RaisedButton.icon(
+        icon: Icon(Icons.add, size: 16),
+        label: Text('Voltar a tela de Estudante'),
+        onPressed: () => {
+          Navigator.pop(context)
+        },
+      ),
+    ]),
     );
   }
 }
